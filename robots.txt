@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://us-minimalist-todo-board.enjoy-onepage.com/sitemap.xml
