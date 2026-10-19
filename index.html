@@ -1,28 +1,521 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Eisenhower Matrix To-Do List - Under maintenance</title>
-<meta name="robots" content="noindex, nofollow">
-<meta name="site-status" content="maintenance">
-<meta name="description" content="This tool is temporarily offline while it is rebuilt.">
+<title>Eisenhower Matrix To-Do List</title>
+<meta name="description" content="Prioritize tasks with an interactive 4-quadrant Eisenhower Matrix to-do list.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://us-minimalist-todo-board.enjoy-onepage.com/">
+<meta name="theme-color" content="#2563eb">
+<link rel="icon" href="/favicon.ico">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Eisenhower Matrix To-Do List">
+<meta property="og:title" content="Eisenhower Matrix To-Do List">
+<meta property="og:description" content="Prioritize tasks with an interactive 4-quadrant Eisenhower Matrix to-do list.">
+<meta property="og:url" content="https://us-minimalist-todo-board.enjoy-onepage.com/">
+<meta property="og:image" content="https://us-minimalist-todo-board.enjoy-onepage.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Eisenhower Matrix To-Do List">
+<meta name="twitter:description" content="Prioritize tasks with an interactive 4-quadrant Eisenhower Matrix to-do list.">
+<meta name="twitter:image" content="https://us-minimalist-todo-board.enjoy-onepage.com/og-image.png">
+<link rel="alternate" type="application/rss+xml" title="Eisenhower Matrix RSS" href="https://us-minimalist-todo-board.enjoy-onepage.com/rss.xml">
+<link rel="sitemap" type="application/xml" href="https://us-minimalist-todo-board.enjoy-onepage.com/sitemap.xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://us-minimalist-todo-board.enjoy-onepage.com/#webapp",
+      "name": "Eisenhower Matrix To-Do List",
+      "url": "https://us-minimalist-todo-board.enjoy-onepage.com/",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "All",
+      "inLanguage": "en",
+      "description": "An executive task prioritization workspace sorting to-dos into Urgent vs Important quadrants with local persistence, completion tracking, and JSON backups.",
+      "image": "https://us-minimalist-todo-board.enjoy-onepage.com/og-image.png",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://us-minimalist-todo-board.enjoy-onepage.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the Eisenhower Decision Matrix?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Eisenhower Matrix divides tasks into four quadrants based on Urgency and Importance: Q1 (Do First), Q2 (Schedule/Plan), Q3 (Delegate), and Q4 (Eliminate)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is Quadrant 2 considered the most critical?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quadrant 2 contains high-impact strategic tasks that are Important but Not Urgent (such as career planning, exercise, and relationship building). Focusing on Q2 prevents continuous crisis management."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I move tasks between different quadrants?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Each task features a quadrant selector dropdown allowing you to reclassify tasks instantly as priorities shift."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my tasks or confidential to-do items stored online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All tasks, matrix states, and completion histories are stored exclusively in your browser local storage. No task data is transmitted to external servers."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- ADSENSE START: loader -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+<!-- ADSENSE END: loader -->
 <style>
-  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #0f172a; }
-  main { max-width: 560px; margin: 12vh auto; padding: 32px 24px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; }
-  h1 { font-size: 1.4rem; margin: 0 0 12px; }
-  p { line-height: 1.6; color: #334155; }
-  a { color: #1d4ed8; font-weight: 600; }
-  .tag { display: inline-block; font-size: .8rem; font-weight: 700; color: #92400e; background: #fef3c7; border-radius: 999px; padding: 4px 10px; margin-bottom: 14px; }
+:root{--bg:#f8fafc;--card:#fff;--ink:#0f172a;--muted:#475569;--accent:#2563eb;--accent-hover:#1d4ed8;--line:#e2e8f0;--q1:#ef4444;--q1-bg:#fef2f2;--q2:#2563eb;--q2-bg:#eff6ff;--q3:#f59e0b;--q3-bg:#fffbeb;--q4:#64748b;--q4-bg:#f1f5f9}
+*{box-sizing:border-box}
+html,body{margin:0;max-width:100%;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-wrap:anywhere}
+.header{background:linear-gradient(135deg,#1e40af,#2563eb);color:#fff;text-align:center;padding:26px 16px 22px}
+.header h1{margin:0;font-size:1.7rem}
+.header-sub{opacity:.92;margin-top:6px;font-size:.95rem}
+.wrap{max-width:1100px;margin:0 auto;padding:12px 14px 8px}
+.grid2{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:1024px){.grid2{grid-template-columns:8fr 4fr;align-items:start}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin:14px 0}
+.grid2 .card{margin:0}
+.card h2{font-size:1.15rem;margin:4px 0 10px}
+.lbl{display:block;font-weight:600;margin:8px 0 4px;font-size:.92rem}
+input[type=text],select{width:100%;font:inherit;font-size:1rem;padding:8px 10px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:var(--ink)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row>div{flex:1 1 120px;min-width:0}
+.btn{font:inherit;border:1px solid #cbd5e1;background:#fff;color:var(--ink);border-radius:10px;padding:8px 13px;cursor:pointer;transition:background .15s}
+.btn:hover{background:#f8fafc}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.btn.primary:hover{background:var(--accent-hover)}
+.btn.sm{padding:4px 10px;font-size:.86rem;border-radius:8px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+
+/* Eisenhower 2x2 Matrix */
+.matrix-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+@media (max-width:640px){.matrix-grid{grid-template-columns:1fr}}
+.quadrant{border-radius:12px;border:1px solid var(--line);padding:12px;display:flex;flex-direction:column}
+.quadrant.q1{background:var(--q1-bg);border-color:#fca5a5}
+.quadrant.q2{background:var(--q2-bg);border-color:#bfdbfe}
+.quadrant.q3{background:var(--q3-bg);border-color:#fde68a}
+.quadrant.q4{background:var(--q4-bg);border-color:#cbd5e1}
+.q-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.q-title{font-size:.92rem;font-weight:800;text-transform:uppercase}
+.q-sub{font-size:.76rem;color:var(--muted)}
+.task-list{list-style:none;padding:0;margin:0;min-height:90px;flex:1}
+.task-item{display:flex;align-items:center;justify-content:space-between;gap:6px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:6px 8px;margin-bottom:6px;font-size:.88rem}
+.task-item.done{opacity:.55;text-decoration:line-through}
+.task-check{transform:scale(1.2);cursor:pointer}
+.task-move{font-size:.75rem;padding:2px 4px;border:1px solid #cbd5e1;border-radius:4px;background:#f8fafc}
+.del-btn{color:#dc2626;background:none;border:none;cursor:pointer;font-weight:bold;padding:0 4px}
+
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+@media (max-width:600px){.metric-grid{grid-template-columns:1fr}}
+.metric-box{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:12px}
+.metric-val{font-size:1.55rem;font-weight:800;color:var(--accent);margin:2px 0}
+.metric-lbl{font-size:.82rem;color:var(--muted);font-weight:600;text-transform:uppercase}
+
+.hint{font-size:.86rem;color:var(--muted);margin:6px 0}
+.notice{border-color:#fcd34d;background:#fffbeb}
+.faq-item h3{font-size:1rem;margin:12px 0 4px}
+.faq-item p{margin:0;color:#334155}
+.src{font-size:.82rem;color:var(--muted)}
+.ad-box{max-width:1100px;margin:10px auto;padding:0 14px;background:transparent;overflow:hidden;text-align:center}
+.ad-top ins{max-height:90px}
+.footer{text-align:center;font-size:.85rem;color:var(--muted);padding:18px 14px 28px}
+.footer a{color:var(--muted);text-decoration:none}
+.footer a:hover{text-decoration:underline}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 18px;border-radius:999px;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;max-width:90vw}
+.toast.show{opacity:1}
+@media (prefers-reduced-motion: reduce){.toast{transition:none}}
 </style>
 </head>
 <body>
-<main>
-  <span class="tag">Under maintenance</span>
+<header class="header">
   <h1>Eisenhower Matrix To-Do List</h1>
-  <p>This tool is temporarily offline. We found that the previous version did not work the way it was described, so we took it down while we rebuild it properly.</p>
-  <p>Please check back later.</p>
-  <p><a href="https://enjoy-onepage.com/">Browse our other free tools</a></p>
+  <div class="header-sub">Executive 4-Quadrant Task Prioritization · Urgent vs Important · 100% Private</div>
+</header>
+
+<!-- ADSENSE START: top -->
+<div class="ad-box ad-top">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="3824727725" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: top -->
+
+<main class="wrap">
+  <div class="grid2">
+    <!-- Matrix Board Card -->
+    <section class="card" aria-labelledby="matrix-h">
+      <h2 id="matrix-h">🎯 Eisenhower Priority Matrix</h2>
+
+      <!-- Quick Add Task Bar -->
+      <div class="row" style="margin-bottom:12px">
+        <div style="flex:3 1 180px">
+          <input type="text" id="taskTitleInput" placeholder="Add task title or action item...">
+        </div>
+        <div style="flex:2 1 140px">
+          <select id="taskQuadInput">
+            <option value="q1">Q1: Do First (Urgent &amp; Important)</option>
+            <option value="q2" selected>Q2: Schedule (Not Urgent &amp; Important)</option>
+            <option value="q3">Q3: Delegate (Urgent &amp; Not Important)</option>
+            <option value="q4">Q4: Eliminate (Not Urgent &amp; Not Important)</option>
+          </select>
+        </div>
+        <div style="flex:0 0 auto">
+          <button type="button" id="btnAddTask" class="btn primary sm" style="height:38px">+ Add Task</button>
+        </div>
+      </div>
+
+      <!-- 2x2 Matrix Grid -->
+      <div class="matrix-grid">
+        <!-- Q1 -->
+        <div class="quadrant q1">
+          <div class="q-header">
+            <span class="q-title" style="color:var(--q1)">Q1: Do First</span>
+            <span class="q-sub">Urgent &amp; Important</span>
+          </div>
+          <ul id="listQ1" class="task-list" aria-label="Quadrant 1 tasks"></ul>
+        </div>
+
+        <!-- Q2 -->
+        <div class="quadrant q2">
+          <div class="q-header">
+            <span class="q-title" style="color:var(--q2)">Q2: Schedule / Plan</span>
+            <span class="q-sub">Not Urgent &amp; Important</span>
+          </div>
+          <ul id="listQ2" class="task-list" aria-label="Quadrant 2 tasks"></ul>
+        </div>
+
+        <!-- Q3 -->
+        <div class="quadrant q3">
+          <div class="q-header">
+            <span class="q-title" style="color:var(--q3)">Q3: Delegate</span>
+            <span class="q-sub">Urgent &amp; Not Important</span>
+          </div>
+          <ul id="listQ3" class="task-list" aria-label="Quadrant 3 tasks"></ul>
+        </div>
+
+        <!-- Q4 -->
+        <div class="quadrant q4">
+          <div class="q-header">
+            <span class="q-title" style="color:var(--q4)">Q4: Eliminate</span>
+            <span class="q-sub">Not Urgent &amp; Not Important</span>
+          </div>
+          <ul id="listQ4" class="task-list" aria-label="Quadrant 4 tasks"></ul>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="btnClearCompleted" class="btn sm">Clear Completed</button>
+        <button type="button" id="btnResetMatrix" class="btn sm">Reset to Sample Plan</button>
+      </div>
+      <p class="hint">Check boxes to complete tasks. Use the dropdown inside tasks to re-prioritize between quadrants.</p>
+    </section>
+
+    <!-- Matrix Analytics Card -->
+    <section class="card" aria-labelledby="analytics-h">
+      <h2 id="analytics-h">📊 Focus &amp; Productivity</h2>
+
+      <div class="metric-grid">
+        <div class="metric-box">
+          <div class="metric-lbl">Total Active Tasks</div>
+          <div id="resActiveTasks" class="metric-val">0</div>
+          <div id="resCompletedTasks" class="hint" style="margin:0">0 completed</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-lbl">Q2 Strategic Focus</div>
+          <div id="resQ2Ratio" class="metric-val">0%</div>
+          <div class="hint" style="margin:0">Target: 60%+ in Q2</div>
+        </div>
+      </div>
+
+      <label class="lbl">Quadrant Task Distribution</label>
+      <div style="font-size:.88rem;margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f1f5f9">
+          <span style="color:var(--q1);font-weight:700">● Q1 Do First:</span>
+          <strong id="countQ1">0</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f1f5f9">
+          <span style="color:var(--q2);font-weight:700">● Q2 Schedule:</span>
+          <strong id="countQ2">0</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f1f5f9">
+          <span style="color:var(--q3);font-weight:700">● Q3 Delegate:</span>
+          <strong id="countQ3">0</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0">
+          <span style="color:var(--q4);font-weight:700">● Q4 Eliminate:</span>
+          <strong id="countQ4">0</strong>
+        </div>
+      </div>
+
+      <div class="actions" style="margin-top:14px">
+        <button type="button" id="btnExportJson" class="btn sm">⬇ Export JSON</button>
+        <button type="button" id="btnShareApp" class="btn sm">🔗 Share Matrix</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- ADSENSE START: mid -->
+  <div class="ad-box ad-mid">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1186914926" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <!-- ADSENSE END: mid -->
+
+  <!-- Educational Guide -->
+  <section class="card" aria-labelledby="guide-h">
+    <h2 id="guide-h">📖 Executive Prioritization: The Eisenhower Principle</h2>
+    <p>Attributed to 34th US President Dwight D. Eisenhower and popularized by Dr. Stephen Covey in <em>The 7 Habits of Highly Effective People</em>, this model distinguishes between urgency and significance:</p>
+    <ul>
+      <li><strong>The Urgent/Important Distinction:</strong> "What is important is seldom urgent, and what is urgent is seldom important." Urgent tasks demand immediate reaction; important tasks contribute directly to long-term goals and strategic values.</li>
+      <li><strong>Quadrant 2 Dominance:</strong> High performers allocate disproportionate time to Quadrant 2 (Not Urgent, but Important)—proactive planning, relationship building, skill development, and health preservation.</li>
+      <li><strong>Minimizing Quadrants 3 and 4:</strong> Urgent non-important tasks (Q3) should be automated or delegated, while time-wasting non-important non-urgent activities (Q4) should be ruthlessly eliminated.</li>
+    </ul>
+    <p class="src">Productivity references: Covey S. (1989) <em>The 7 Habits of Highly Effective People</em>; Eisenhower D. (1954) Address to the Second Assembly of the World Council of Churches.</p>
+  </section>
+
+  <section class="card" id="faq" aria-labelledby="faq-h">
+    <h2 id="faq-h">❓ Frequently Asked Questions</h2>
+    <div class="faq-item"><h3>What is the Eisenhower Decision Matrix?</h3><p>The Eisenhower Matrix divides tasks into four quadrants based on Urgency and Importance: Q1 (Do First), Q2 (Schedule/Plan), Q3 (Delegate), and Q4 (Eliminate).</p></div>
+    <div class="faq-item"><h3>Why is Quadrant 2 considered the most critical?</h3><p>Quadrant 2 contains high-impact strategic tasks that are Important but Not Urgent (such as career planning, exercise, and relationship building). Focusing on Q2 prevents continuous crisis management.</p></div>
+    <div class="faq-item"><h3>Can I move tasks between different quadrants?</h3><p>Yes. Each task features a quadrant selector dropdown allowing you to reclassify tasks instantly as priorities shift.</p></div>
+    <div class="faq-item"><h3>Are my tasks or confidential to-do items stored online?</h3><p>No. All tasks, matrix states, and completion histories are stored exclusively in your browser local storage. No task data is transmitted to external servers.</p></div>
+  </section>
+
+  <section class="card notice" aria-labelledby="note-h">
+    <h2 id="note-h">⚠️ Note on Task Overload</h2>
+    <p>Limit Quadrant 1 tasks to fewer than 5 critical action items per day. Having more than 5 urgent and important tasks indicates chronic planning deficits rather than true operational emergencies.</p>
+  </section>
 </main>
+
+<!-- ADSENSE START: bottom -->
+<div class="ad-box ad-bottom">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="3416334507" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: bottom -->
+
+<footer class="footer">
+  <p>Free Eisenhower Matrix To-Do List · 100% private and client-side.</p>
+  <p><a href="/disclaimer.html">Disclaimer</a> | <a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms of Service</a></p>
+</footer>
+
+<div id="global-ux-toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- LOGIC START -->
+<script>
+(function () {
+  'use strict';
+  var SITE = 'https://us-minimalist-todo-board.enjoy-onepage.com';
+  var TOOL_NAME = 'Eisenhower Matrix To-Do List';
+  var STORAGE_KEY = 'us_eisenhower_tasks';
+
+  var tasks = [];
+
+  var SAMPLE_TASKS = [
+    { id: 1, title: 'Fix critical production database bug', quad: 'q1', done: false },
+    { id: 2, title: 'Pay quarterly business tax deadline', quad: 'q1', done: false },
+    { id: 3, title: 'Draft annual engineering architecture roadmap', quad: 'q2', done: false },
+    { id: 4, title: 'Exercise: 45 min resistance training', quad: 'q2', done: false },
+    { id: 5, title: 'Reply to non-urgent vendor sales inquiries', quad: 'q3', done: false },
+    { id: 6, title: 'Scroll social media without a defined agenda', quad: 'q4', done: false }
+  ];
+
+  function $(id) { return document.getElementById(id); }
+
+  function showToast(msg) {
+    var toast = $('global-ux-toast');
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toast._tid);
+    toast._tid = setTimeout(function () { toast.classList.remove('show'); }, 2200);
+  }
+
+  function loadTasks() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      tasks = raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(SAMPLE_TASKS));
+    } catch (e) {
+      tasks = JSON.parse(JSON.stringify(SAMPLE_TASKS));
+    }
+    renderMatrix();
+  }
+
+  function saveTasks() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+    } catch (e) {}
+    renderMatrix();
+  }
+
+  function renderMatrix() {
+    ['q1', 'q2', 'q3', 'q4'].forEach(function (q) {
+      var listEl = $('list' + q.toUpperCase());
+      listEl.innerHTML = '';
+      var qTasks = tasks.filter(function (t) { return t.quad === q; });
+
+      if (qTasks.length === 0) {
+        listEl.innerHTML = '<li style="text-align:center;color:var(--muted);font-size:.8rem;padding:16px 0">No tasks in this quadrant</li>';
+      } else {
+        qTasks.forEach(function (t) {
+          var li = document.createElement('li');
+          li.className = 'task-item' + (t.done ? ' done' : '');
+
+          var chk = document.createElement('input');
+          chk.type = 'checkbox';
+          chk.className = 'task-check';
+          chk.checked = t.done;
+          chk.addEventListener('change', function () {
+            t.done = this.checked;
+            saveTasks();
+          });
+
+          var titleSpan = document.createElement('span');
+          titleSpan.style.flex = '1';
+          titleSpan.style.margin = '0 6px';
+          titleSpan.textContent = t.title;
+
+          var sel = document.createElement('select');
+          sel.className = 'task-move';
+          sel.innerHTML = '<option value="q1"' + (t.quad === 'q1' ? ' selected' : '') + '>Q1</option>' +
+            '<option value="q2"' + (t.quad === 'q2' ? ' selected' : '') + '>Q2</option>' +
+            '<option value="q3"' + (t.quad === 'q3' ? ' selected' : '') + '>Q3</option>' +
+            '<option value="q4"' + (t.quad === 'q4' ? ' selected' : '') + '>Q4</option>';
+          sel.addEventListener('change', function () {
+            t.quad = this.value;
+            saveTasks();
+            showToast('Moved to ' + this.value.toUpperCase());
+          });
+
+          var del = document.createElement('button');
+          del.type = 'button';
+          del.className = 'del-btn';
+          del.innerHTML = '&times;';
+          del.title = 'Delete Task';
+          del.addEventListener('click', function () {
+            tasks = tasks.filter(function (item) { return item.id !== t.id; });
+            saveTasks();
+            showToast('Task removed');
+          });
+
+          li.appendChild(chk);
+          li.appendChild(titleSpan);
+          li.appendChild(sel);
+          li.appendChild(del);
+          listEl.appendChild(li);
+        });
+      }
+    });
+
+    updateAnalytics();
+  }
+
+  function updateAnalytics() {
+    var total = tasks.length;
+    var completed = tasks.filter(function (t) { return t.done; }).length;
+    var active = total - completed;
+
+    var counts = { q1: 0, q2: 0, q3: 0, q4: 0 };
+    tasks.forEach(function (t) {
+      if (!t.done && counts[t.quad] !== undefined) counts[t.quad]++;
+    });
+
+    $('resActiveTasks').textContent = active;
+    $('resCompletedTasks').textContent = completed + ' of ' + total + ' completed';
+
+    $('countQ1').textContent = counts.q1;
+    $('countQ2').textContent = counts.q2;
+    $('countQ3').textContent = counts.q3;
+    $('countQ4').textContent = counts.q4;
+
+    var q2Ratio = active > 0 ? Math.round((counts.q2 / active) * 100) : 0;
+    $('resQ2Ratio').textContent = q2Ratio + '%';
+  }
+
+  function addTask() {
+    var title = $('taskTitleInput').value.trim();
+    if (!title) {
+      showToast('Please enter a task title.');
+      return;
+    }
+    var quad = $('taskQuadInput').value;
+    tasks.push({
+      id: Date.now(),
+      title: title,
+      quad: quad,
+      done: false
+    });
+    $('taskTitleInput').value = '';
+    saveTasks();
+    showToast('Task added to ' + quad.toUpperCase());
+  }
+
+  // Event handlers
+  $('btnAddTask').addEventListener('click', addTask);
+  $('taskTitleInput').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      addTask();
+    }
+  });
+
+  $('btnClearCompleted').addEventListener('click', function () {
+    var before = tasks.length;
+    tasks = tasks.filter(function (t) { return !t.done; });
+    saveTasks();
+    showToast('Cleared ' + (before - tasks.length) + ' completed tasks');
+  });
+
+  $('btnResetMatrix').addEventListener('click', function () {
+    tasks = JSON.parse(JSON.stringify(SAMPLE_TASKS));
+    saveTasks();
+    showToast('Reset to sample Eisenhower tasks');
+  });
+
+  $('btnExportJson').addEventListener('click', function () {
+    var blob = new Blob([JSON.stringify(tasks, null, 2)], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'eisenhower_matrix_tasks.json';
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('Tasks exported as JSON');
+  });
+
+  $('btnShareApp').addEventListener('click', function () {
+    var shareMsg = '🎯 Free Eisenhower Matrix To-Do List\n👉 ' + TOOL_NAME + ': ' + SITE + '/';
+    if (navigator.share) {
+      navigator.share({ title: TOOL_NAME, text: shareMsg, url: SITE + '/' }).catch(function (e) {
+        if (!e || e.name !== 'AbortError') showToast('Link ready to share!');
+      });
+    } else {
+      showToast('Matrix URL: ' + SITE + '/');
+    }
+  });
+
+  loadTasks();
+})();
+</script>
+<!-- LOGIC END -->
 </body>
 </html>

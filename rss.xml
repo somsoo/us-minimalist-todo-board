@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>Minimalist Eisenhower Matrix To-Do | Urgent vs Important Planner</title>
+  <title>Eisenhower Matrix To-Do List</title>
   <link>https://us-minimalist-todo-board.enjoy-onepage.com/</link>
-  <description>Prioritize tasks using the 4-quadrant Eisenhower Matrix (Do, Schedule, Delegate, Delete). Boost productivity without overwhelm.</description>
+  <description>Prioritize tasks with an interactive 4-quadrant Eisenhower Matrix to-do list.</description>
   <language>en-us</language>
   <atom:link href="https://us-minimalist-todo-board.enjoy-onepage.com/rss.xml" rel="self" type="application/rss+xml" />
-  <lastBuildDate>Tue, 29 Sep 2026 06:02:25 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 19 Oct 2026 01:24:26 +0000</lastBuildDate>
   <item>
-    <title>Disclaimer | Minimalist Eisenhower Matrix To-Do | Urgent vs Important Planner</title>
+    <title>Disclaimer | Eisenhower Matrix To-Do List</title>
     <link>https://us-minimalist-todo-board.enjoy-onepage.com/disclaimer.html</link>
     <guid isPermaLink="true">https://us-minimalist-todo-board.enjoy-onepage.com/disclaimer.html</guid>
-    <description>Disclaimer | Minimalist Eisenhower Matrix To-Do | Urgent vs Important Planner</description>
-    <pubDate>Sun, 20 Sep 2026 22:10:49 +0900</pubDate>
+    <description>Disclaimer for the Eisenhower Matrix To-Do List.</description>
+    <pubDate>Mon, 19 Oct 2026 01:24:26 +0000</pubDate>
   </item>
   <item>
-    <title>Terms of Service | Minimalist Eisenhower Matrix To-Do | Urgent vs Important Planner</title>
-    <link>https://us-minimalist-todo-board.enjoy-onepage.com/terms.html</link>
-    <guid isPermaLink="true">https://us-minimalist-todo-board.enjoy-onepage.com/terms.html</guid>
-    <description>Terms of Service | Minimalist Eisenhower Matrix To-Do | Urgent vs Important Planner</description>
-    <pubDate>Sun, 20 Sep 2026 22:10:49 +0900</pubDate>
-  </item>
-  <item>
-    <title>Privacy Policy | Minimalist Eisenhower Matrix To-Do | Urgent vs Important Planner</title>
+    <title>Privacy Policy | Eisenhower Matrix To-Do List</title>
     <link>https://us-minimalist-todo-board.enjoy-onepage.com/privacy.html</link>
     <guid isPermaLink="true">https://us-minimalist-todo-board.enjoy-onepage.com/privacy.html</guid>
-    <description>Privacy Policy | Minimalist Eisenhower Matrix To-Do | Urgent vs Important Planner</description>
-    <pubDate>Sun, 20 Sep 2026 22:10:49 +0900</pubDate>
+    <description>Privacy Policy for the Eisenhower Matrix To-Do List.</description>
+    <pubDate>Mon, 19 Oct 2026 01:24:26 +0000</pubDate>
+  </item>
+  <item>
+    <title>Terms of Service | Eisenhower Matrix To-Do List</title>
+    <link>https://us-minimalist-todo-board.enjoy-onepage.com/terms.html</link>
+    <guid isPermaLink="true">https://us-minimalist-todo-board.enjoy-onepage.com/terms.html</guid>
+    <description>Terms of Service for the Eisenhower Matrix To-Do List.</description>
+    <pubDate>Mon, 19 Oct 2026 01:24:26 +0000</pubDate>
   </item>
 </channel>
 </rss>
